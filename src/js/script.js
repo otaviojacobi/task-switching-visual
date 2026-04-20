@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentTrials = [];
   let currentIndex = 0;
   let stageNumber = 0;
+  let pendingStage = null;
   let results = [];
   let stageResults = [];
   let startTime = 0;
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'INSTRUCTIONS_1': document.getElementById('instructions-1'),
     'INSTRUCTIONS_2': document.getElementById('instructions-2'),
     'INSTRUCTIONS_3': document.getElementById('instructions-3'),
+    'POSITIONING': document.getElementById('positioning-screen'),
     'TEST': document.getElementById('test-screen'),
     'RESULTS': document.getElementById('results-screen')
   };
@@ -53,25 +55,28 @@ document.addEventListener('DOMContentLoaded', () => {
   function startStage() {
     clearTimeout(feedbackTimeout);
     window.removeEventListener('keydown', handleInstructionKey);
-    
-    switch (gameState) {
-      case 'INSTRUCTIONS_1':
-        gameState = 'STAGE_1';
-        stageNumber = 1;
-        currentTrials = STAGE_1_TRIALS;
-        break;
-      case 'INSTRUCTIONS_2':
-        gameState = 'STAGE_2';
-        stageNumber = 2;
-        currentTrials = STAGE_2_TRIALS;
-        break;
-      case 'INSTRUCTIONS_3':
-        gameState = 'STAGE_3';
-        stageNumber = 3;
-        currentTrials = STAGE_3_TRIALS;
-        break;
-    }
 
+    const stageMap = {
+      'INSTRUCTIONS_1': { next: 'STAGE_1', stageNum: 1, trials: STAGE_1_TRIALS },
+      'INSTRUCTIONS_2': { next: 'STAGE_2', stageNum: 2, trials: STAGE_2_TRIALS },
+      'INSTRUCTIONS_3': { next: 'STAGE_3', stageNum: 3, trials: STAGE_3_TRIALS },
+    };
+
+    const config = stageMap[gameState];
+    if (!config) return;
+
+    pendingStage = config;
+    gameState = 'POSITIONING';
+    showScreen('POSITIONING');
+    window.addEventListener('keydown', handlePositioningKey);
+  }
+
+  function handlePositioningKey(event) {
+    if (event.code !== 'Space') return;
+    window.removeEventListener('keydown', handlePositioningKey);
+    gameState = pendingStage.next;
+    stageNumber = pendingStage.stageNum;
+    currentTrials = pendingStage.trials;
     currentIndex = 0;
     stageResults = [];
     showScreen('TEST');
@@ -170,6 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('e-d').textContent = metrics.E_D.toString();
     document.getElementById('rt-a').textContent = `${metrics.RT_A.toFixed(0)} ms`;
     document.getElementById('e-a').textContent = metrics.E_A.toString();
+    document.getElementById('rt-diff').textContent = `${(metrics.RT_A - metrics.RT_D).toFixed(0)} ms`;
+    document.getElementById('e-diff').textContent = (metrics.E_A - metrics.E_D).toString();
     document.getElementById('tr').textContent = `${metrics.TR.toFixed(0)} ms`;
     document.getElementById('tnr').textContent = `${metrics.TnR.toFixed(0)} ms`;
     document.getElementById('ctt').textContent = `${metrics.CTT.toFixed(0)} ms`;

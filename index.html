@@ -89,6 +89,19 @@
         </div>
       </div>
 
+      <!-- Tela de Posicionamento -->
+      <div id="positioning-screen" class="screen-container hidden">
+        <h1 class="title">Preparação</h1>
+        <div class="instructions-content">
+          <p style="font-size:1.4rem; text-align:center; margin: 2rem 0;">
+            Posicione seu indicador esquerdo sobre a tecla <kbd>A</kbd> e o direito sobre a tecla <kbd>L</kbd>
+          </p>
+        </div>
+        <div class="start-prompt">
+          <p>Pressione <kbd>ESPAÇO</kbd> para iniciar.</p>
+        </div>
+      </div>
+
       <!-- Tela do Teste -->
       <div id="test-screen" class="hidden">
         <div class="test-container">
@@ -109,11 +122,13 @@
         <div class="results-grid">
           <div class="result-section">
             <h2 class="section-title">Performance Geral</h2>
-            <div class="card-group-4">
+            <div class="card-group-6">
               <div class="metric-card"><h3>RT Médio (Direto)</h3><p id="rt-d">0 ms</p><small>Tempo de reação nas etapas 1 e 2</small></div>
               <div class="metric-card"><h3>Total Erros (Direto)</h3><p id="e-d">0</p><small>Erros totais nas etapas 1 e 2</small></div>
               <div class="metric-card"><h3>RT Médio (Alternado)</h3><p id="rt-a">0 ms</p><small>Tempo de reação na etapa 3</small></div>
               <div class="metric-card"><h3>Total Erros (Alternado)</h3><p id="e-a">0</p><small>Erros totais na etapa 3</small></div>
+              <div class="metric-card"><h3>Diferença RT (Alt - Dir)</h3><p id="rt-diff">0 ms</p><small>Custo de alternância no tempo</small></div>
+              <div class="metric-card"><h3>Diferença Erros (Alt - Dir)</h3><p id="e-diff">0</p><small>Custo de alternância nos erros</small></div>
             </div>
           </div>
           <div class="result-section">
