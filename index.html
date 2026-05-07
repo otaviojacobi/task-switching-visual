@@ -13,8 +13,8 @@
       <div id="instructions-1" class="screen-container">
         <h1 class="title">Etapa 1: Temperatura</h1>
         <div class="instructions-content">
-          <p> Será apresentada uma série de palavras, uma de cada vez, no meio da tela. O desenho de um termômetro <span class="highlight-cyan">(🌡️)</span> irá aparecer logo acima da palavra.”</p>
-          <p>Sua tarefa é decidir o mais rápido possível se a palavra representa uma comida <span class="highlight-cyan">FRIA</span> ou <span class="highlight-amber">QUENTE</span>.</p>
+          <p> Será apresentada uma série de imagens, uma de cada vez, no meio da tela. O desenho de um termômetro <span class="highlight-cyan">(🌡️)</span> irá aparecer logo acima da imagem.</p>
+          <p>Sua tarefa é decidir o mais rápido possível se a imagem representa uma comida <span class="highlight-cyan">FRIA</span> ou <span class="highlight-amber">QUENTE</span>.</p>
           <div class="keys-info">
             <div>
               <p>Pressione a tecla</p>
@@ -38,8 +38,8 @@
       <div id="instructions-2" class="screen-container hidden">
         <h1 class="title">Etapa 2: Sabor</h1>
         <div class="instructions-content">
-          <p>Agora, a regra mudou. Será apresentada uma série de palavras, uma de cada vez, no meio da tela. O desenho de uma boca <span class="highlight-cyan">(👄)</span> irá aparecer logo acima da palavra.</p>
-          <p>Sua tarefa é decidir o mais rápido possível se a palavra representa uma comida <span class="highlight-cyan">DOCE</span> ou <span class="highlight-amber">SALGADA</span>.</p>
+          <p>Agora, a regra mudou. Será apresentada uma série de imagens, uma de cada vez, no meio da tela. O desenho de uma boca <span class="highlight-cyan">(👄)</span> irá aparecer logo acima da imagem.</p>
+          <p>Sua tarefa é decidir o mais rápido possível se a imagem representa uma comida <span class="highlight-cyan">DOCE</span> ou <span class="highlight-amber">SALGADA</span>.</p>
           <div class="keys-info">
             <div>
               <p>Pressione a tecla</p>
@@ -64,7 +64,7 @@
       <div id="instructions-3" class="screen-container hidden">
         <h1 class="title">Etapa 3: Alternando Tarefas</h1>
         <div class="instructions-content">
-          <p>Agora, vamos combinar as duas tarefas. Preste atenção ao símbolo acima da palavra a cada rodada!</p>
+          <p>Agora, vamos combinar as duas tarefas. Preste atenção ao símbolo acima da imagem a cada rodada!</p>
           <div class="task-rules">
             <p>Se o símbolo for 🌡️: Classifique pela <span>TEMPERATURA</span>.</p>
             <p>Se o símbolo for 👄: Classifique pelo <span>SABOR</span>.</p>
@@ -93,7 +93,7 @@
       <div id="positioning-screen" class="screen-container hidden">
         <h1 class="title">Preparação</h1>
         <div class="instructions-content">
-          <p style="font-size:1.4rem; text-align:center; margin: 2rem 0;">
+          <p style="font-size:1.4rem; text-align:center; margin: 2rem 0; white-space: nowrap;">
             Posicione seu indicador esquerdo sobre a tecla <kbd>A</kbd> e o direito sobre a tecla <kbd>L</kbd>
           </p>
         </div>
@@ -106,7 +106,9 @@
       <div id="test-screen" class="hidden">
         <div class="test-container">
           <div id="test-cue" class="test-cue"></div>
-          <h2 id="test-word" class="test-word"></h2>
+          <div class="test-image-wrapper">
+            <img id="test-image" class="test-image" alt="" />
+          </div>
           <div id="test-feedback" class="test-feedback hidden">
             <span>X</span>
             <p>Tente novamente</p>
