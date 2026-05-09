@@ -48,7 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const testImageEl = document.getElementById('test-image');
   const testFeedbackEl = document.getElementById('test-feedback');
   const testProgressEl = document.getElementById('test-progress');
+  const testKeyAMeaningEl = document.getElementById('test-key-a-meaning');
+  const testKeyLMeaningEl = document.getElementById('test-key-l-meaning');
   const restartButton = document.getElementById('restart-button');
+
+  const KEY_HINTS_BY_STAGE = {
+    1: { a: 'FRIA', l: 'QUENTE' },
+    2: { a: 'DOCE', l: 'SALGADA' },
+    3: { a: 'FRIA<br>ou DOCE', l: 'QUENTE<br>ou SALGADA' },
+  };
 
   // --- FUNÇÕES DE CONTROLE DE TELA ---
   function showScreen(screenKey) {
@@ -84,6 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
     currentTrials = pendingStage.trials;
     currentIndex = 0;
     stageResults = [];
+    const hints = KEY_HINTS_BY_STAGE[stageNumber];
+    testKeyAMeaningEl.innerHTML = hints.a;
+    testKeyLMeaningEl.innerHTML = hints.l;
     showScreen('TEST');
     renderCurrentTrial();
     window.addEventListener('keydown', handleTestKey);
