@@ -173,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
       case 'STAGE_3':
         gameState = 'RESULTS';
-        displayResults();
         showScreen('RESULTS');
         break;
     }
@@ -185,46 +184,31 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   }
 
-  // --- LÓGICA DE RESULTADOS ---
-  function displayResults() {
-    const metrics = calculateMetrics(results);
-    document.getElementById('rt-d').textContent = `${metrics.RT_D.toFixed(0)} ms`;
-    document.getElementById('e-d').textContent = metrics.E_D.toString();
-    document.getElementById('rt-a').textContent = `${metrics.RT_A.toFixed(0)} ms`;
-    document.getElementById('e-a').textContent = metrics.E_A.toString();
-    document.getElementById('rt-diff').textContent = `${(metrics.RT_A - metrics.RT_D).toFixed(0)} ms`;
-    document.getElementById('e-diff').textContent = (metrics.E_A - metrics.E_D).toString();
-    document.getElementById('tr').textContent = `${metrics.TR.toFixed(0)} ms`;
-    document.getElementById('tnr').textContent = `${metrics.TnR.toFixed(0)} ms`;
-    document.getElementById('ctt').textContent = `${metrics.CTT.toFixed(0)} ms`;
-    document.getElementById('er').textContent = metrics.ER.toString();
-    document.getElementById('enr').textContent = metrics.EnR.toString();
-    document.getElementById('cte').textContent = metrics.CTE.toString();
+  // --- DOWNLOAD CSV ---
+  function downloadCSV() {
+    const header = ['indice_trial', 'etapa', 'palavra', 'criterio', 'eh_troca', 'tempo_reacao_ms', 'numero_erros', 'tecla_correta'];
+    const rows = results.map((r, i) => [
+      i + 1,
+      r.stage,
+      r.word,
+      r.criterion,
+      r.isSwitchTrial === undefined ? '' : (r.isSwitchTrial ? 'sim' : 'nao'),
+      r.reactionTime,
+      r.errorCount,
+      r.correctKey
+    ]);
+    const csv = [header, ...rows].map(row => row.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `resultados-task-switching-visual-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   }
 
-  function calculateMetrics(resultsData) {
-    const directResults = resultsData.filter(r => r.stage < 3);
-    const alternatingResults = resultsData.filter(r => r.stage === 3);
-    const switchTrials = alternatingResults.filter(r => r.isSwitchTrial);
-    const nonSwitchTrials = alternatingResults.filter(r => !r.isSwitchTrial);
-
-    const getAvgRT = data => data.length ? data.reduce((sum, r) => sum + r.reactionTime, 0) / data.length : 0;
-    const getTotalErrors = data => data.reduce((sum, r) => sum + r.errorCount, 0);
-
-    const RT_D = getAvgRT(directResults);
-    const E_D = getTotalErrors(directResults);
-    const RT_A = getAvgRT(alternatingResults);
-    const E_A = getTotalErrors(alternatingResults);
-    const TR = getAvgRT(switchTrials);
-    const TnR = getAvgRT(nonSwitchTrials);
-    const CTT = TR - TnR;
-    const ER = getTotalErrors(switchTrials);
-    const EnR = getTotalErrors(nonSwitchTrials);
-    const CTE = ER - EnR;
-
-    return { RT_D, E_D, RT_A, E_A, TR, TnR, CTT, ER, EnR, CTE };
-  }
-  
   // --- INICIALIZAÇÃO E REINÍCIO ---
   function init() {
     gameState = 'INSTRUCTIONS_1';
@@ -233,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('keydown', handleInstructionKey);
   }
 
+  document.getElementById('download-csv-button').addEventListener('click', downloadCSV);
   restartButton.addEventListener('click', init);
 
   init();
