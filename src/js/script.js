@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- DOWNLOAD CSV ---
   function downloadCSV() {
-    const header = ['indice_trial', 'etapa', 'palavra', 'criterio', 'eh_troca', 'tempo_reacao_ms', 'numero_erros', 'tecla_correta'];
+    const fields = ['indice_trial', 'etapa', 'palavra', 'criterio', 'eh_troca', 'tempo_reacao_ms', 'numero_erros', 'tecla_correta'];
     const rows = results.map((r, i) => [
       i + 1,
       r.stage,
@@ -197,7 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
       r.errorCount,
       r.correctKey
     ]);
-    const csv = [header, ...rows].map(row => row.join(',')).join('\n');
+    const headerRow = ['campo', ...rows.map((_, i) => i + 1)];
+    const fieldRows = fields.map((field, fi) => [field, ...rows.map(row => row[fi])]);
+    const csv = [headerRow, ...fieldRows].map(row => row.join(',')).join('\n');
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
