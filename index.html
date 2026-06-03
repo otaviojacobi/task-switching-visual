@@ -127,6 +127,29 @@
         <div id="test-progress" class="test-progress"></div>
       </div>
 
+      <!-- Tela de Transição (Treino → Teste Oficial) -->
+      <div id="transition-screen" class="screen-container hidden">
+        <h1 class="title">Treino Concluído</h1>
+        <div class="instructions-content">
+          <p>Agora começa o <strong>teste oficial</strong> desta etapa. As regras são as mesmas do treino.</p>
+          <div class="keys-info">
+            <div>
+              <p>Pressione a tecla</p>
+              <kbd>A</kbd>
+              <p id="transition-key-a-text"></p>
+            </div>
+            <div>
+              <p>Pressione a tecla</p>
+              <kbd>L</kbd>
+              <p id="transition-key-l-text"></p>
+            </div>
+          </div>
+        </div>
+        <div class="start-prompt">
+          <p>Pressione <kbd>ESPAÇO</kbd> para iniciar o teste oficial.</p>
+        </div>
+      </div>
+
       <!-- Tela de Resultados -->
       <div id="results-screen" class="screen-container hidden">
         <h1 class="title-light">Teste Concluído</h1>

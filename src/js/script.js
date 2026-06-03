@@ -19,9 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = `src/imagens/${encodeURIComponent(word)}.jpg`;
     return img;
   });
-  const STAGE_1_TRIALS = [ 'Pudim', 'Sopa', 'Suco', 'Batata Frita', 'Pizza', 'Café', 'Café', 'Sanduíche', 'Panqueca', 'Presunto', 'Queijo', 'Sushi', 'Churros', 'Sushi', 'Sorvete', 'Macarrão', 'Hambúrguer', 'Iogurte', 'Panqueca', 'Sopa', 'Chá', 'Pizza', 'Sanduíche', 'Sorvete', 'Salada', 'Presunto', 'Bolo', 'Refrigerante', 'Salada', 'Iogurte', 'Queijo', 'Suco', 'Hambúrguer', 'Churros', 'Batata Frita', 'Pudim', 'Macarrão', 'Chá', 'Bolo', 'Refrigerante' ];
-  const STAGE_2_TRIALS = [ 'Café', 'Panqueca', 'Presunto', 'Macarrão', 'Suco', 'Refrigerante', 'Sopa', 'Macarrão', 'Sushi', 'Sushi', 'Presunto', 'Sopa', 'Chá', 'Churros', 'Iogurte', 'Pudim', 'Sanduíche', 'Churros', 'Pudim', 'Sorvete', 'Salada', 'Pizza', 'Batata Frita', 'Iogurte', 'Suco', 'Queijo', 'Bolo', 'Hambúrguer', 'Salada', 'Pizza', 'Batata Frita', 'Café', 'Chá', 'Sanduíche', 'Sorvete', 'Bolo', 'Refrigerante', 'Hambúrguer', 'Queijo', 'Presunto' ];
-  const STAGE_3_TRIALS = [ { word: 'Churros', criterion: 'Temperatura', isSwitch: false }, { word: 'Hambúrguer', criterion: 'Temperatura', isSwitch: false }, { word: 'Hambúrguer', criterion: 'Sabor', isSwitch: true }, { word: 'Pudim', criterion: 'Sabor', isSwitch: false }, { word: 'Sopa', criterion: 'Sabor', isSwitch: false }, { word: 'Bolo', criterion: 'Sabor', isSwitch: false }, { word: 'Chá', criterion: 'Sabor', isSwitch: false }, { word: 'Sanduíche', criterion: 'Sabor', isSwitch: false }, { word: 'Salada', criterion: 'Temperatura', isSwitch: true }, { word: 'Pizza', criterion: 'Sabor', isSwitch: true }, { word: 'Batata Frita', criterion: 'Sabor', isSwitch: false }, { word: 'Churros', criterion: 'Temperatura', isSwitch: true }, { word: 'Batata Frita', criterion: 'Temperatura', isSwitch: false }, { word: 'Chá', criterion: 'Sabor', isSwitch: true }, { word: 'Sorvete', criterion: 'Temperatura', isSwitch: true }, { word: 'Iogurte', criterion: 'Temperatura', isSwitch: false }, { word: 'Suco', criterion: 'Sabor', isSwitch: true }, { word: 'Pizza', criterion: 'Sabor', isSwitch: false }, { word: 'Salada', criterion: 'Sabor', isSwitch: false }, { word: 'Chá', criterion: 'Temperatura', isSwitch: true }, { word: 'Salada', criterion: 'Sabor', isSwitch: true }, { word: 'Sorvete', criterion: 'Sabor', isSwitch: false }, { word: 'Bolo', criterion: 'Temperatura', isSwitch: true }, { word: 'Sopa', criterion: 'Temperatura', isSwitch: false }, { word: 'Macarrão', criterion: 'Sabor', isSwitch: true }, { word: 'Sushi', criterion: 'Sabor', isSwitch: false }, { word: 'Macarrão', criterion: 'Temperatura', isSwitch: true }, { word: 'Sopa', criterion: 'Temperatura', isSwitch: false }, { word: 'Panqueca', criterion: 'Temperatura', isSwitch: false }, { word: 'Queijo', criterion: 'Sabor', isSwitch: true }, { word: 'Iogurte', criterion: 'Temperatura', isSwitch: true }, { word: 'Pizza', criterion: 'Temperatura', isSwitch: false }, { word: 'Iogurte', criterion: 'Sabor', isSwitch: true }, { word: 'Café', criterion: 'Sabor', isSwitch: false }, { word: 'Presunto', criterion: 'Temperatura', isSwitch: true }, { word: 'Pudim', criterion: 'Sabor', isSwitch: true }, { word: 'Macarrão', criterion: 'Sabor', isSwitch: false }, { word: 'Presunto', criterion: 'Temperatura', isSwitch: true }, { word: 'Refrigerante', criterion: 'Sabor', isSwitch: true }, { word: 'Sushi', criterion: 'Temperatura', isSwitch: true }, { word: 'Bolo', criterion: 'Temperatura', isSwitch: false }, { word: 'Refrigerante', criterion: 'Temperatura', isSwitch: false }, { word: 'Hambúrguer', criterion: 'Sabor', isSwitch: true }, { word: 'Suco', criterion: 'Temperatura', isSwitch: true }, { word: 'Queijo', criterion: 'Temperatura', isSwitch: false }, { word: 'Sushi', criterion: 'Sabor', isSwitch: true }, { word: 'Pudim', criterion: 'Temperatura', isSwitch: true }, { word: 'Sorvete', criterion: 'Temperatura', isSwitch: false }, { word: 'Iogurte', criterion: 'Sabor', isSwitch: true }, { word: 'Café', criterion: 'Temperatura', isSwitch: true }, { word: 'Hambúrguer', criterion: 'Temperatura', isSwitch: false }, { word: 'Presunto', criterion: 'Sabor', isSwitch: true }, { word: 'Refrigerante', criterion: 'Temperatura', isSwitch: true }, { word: 'Salada', criterion: 'Temperatura', isSwitch: false }, { word: 'Sanduíche', criterion: 'Temperatura', isSwitch: false }, { word: 'Sanduíche', criterion: 'Temperatura', isSwitch: false }, { word: 'Macarrão', criterion: 'Temperatura', isSwitch: false }, { word: 'Panqueca', criterion: 'Sabor', isSwitch: true }, { word: 'Pizza', criterion: 'Temperatura', isSwitch: true }, { word: 'Pudim', criterion: 'Temperatura', isSwitch: false }, { word: 'Queijo', criterion: 'Temperatura', isSwitch: false }, { word: 'Churros', criterion: 'Sabor', isSwitch: true }, { word: 'Panqueca', criterion: 'Temperatura', isSwitch: true }, { word: 'Churros', criterion: 'Sabor', isSwitch: true }, { word: 'Suco', criterion: 'Temperatura', isSwitch: true }, { word: 'Batata Frita', criterion: 'Temperatura', isSwitch: false }, { word: 'Refrigerante', criterion: 'Sabor', isSwitch: true }, { word: 'Queijo', criterion: 'Sabor', isSwitch: false }, { word: 'Panqueca', criterion: 'Sabor', isSwitch: false }, { word: 'Presunto', criterion: 'Sabor', isSwitch: false }, { word: 'Suco', criterion: 'Sabor', isSwitch: false }, { word: 'Sorvete', criterion: 'Sabor', isSwitch: false }, { word: 'Chá', criterion: 'Temperatura', isSwitch: true }, { word: 'Bolo', criterion: 'Sabor', isSwitch: true }, { word: 'Batata Frita', criterion: 'Sabor', isSwitch: false }, { word: 'Sanduíche', criterion: 'Sabor', isSwitch: false }, { word: 'Café', criterion: 'Sabor', isSwitch: false }, { word: 'Sushi', criterion: 'Temperatura', isSwitch: true }, { word: 'Sopa', criterion: 'Sabor', isSwitch: true }, { word: 'Café', criterion: 'Temperatura', isSwitch: true } ];
+
+  const STAGE_1_DEMO = [ 'Sushi', 'Sorvete', 'Macarrão', 'Hambúrguer', 'Iogurte', 'Panqueca', 'Sopa', 'Chá', 'Pizza', 'Sanduíche' ];
+  const STAGE_2_DEMO = [ 'Churros', 'Iogurte', 'Pudim', 'Sanduíche', 'Churros', 'Pudim', 'Sorvete', 'Salada', 'Pizza', 'Batata Frita' ];
+  const STAGE_3_DEMO = [
+    { word: 'Sorvete', criterion: 'Temperatura', isSwitch: false }, { word: 'Iogurte', criterion: 'Temperatura', isSwitch: false },
+    { word: 'Suco', criterion: 'Sabor', isSwitch: true }, { word: 'Pizza', criterion: 'Sabor', isSwitch: false },
+    { word: 'Salada', criterion: 'Sabor', isSwitch: false }, { word: 'Chá', criterion: 'Temperatura', isSwitch: true },
+    { word: 'Salada', criterion: 'Sabor', isSwitch: true }, { word: 'Sorvete', criterion: 'Sabor', isSwitch: false },
+    { word: 'Bolo', criterion: 'Temperatura', isSwitch: true }, { word: 'Sopa', criterion: 'Temperatura', isSwitch: false },
+  ];
+
+  const STAGE_1_OFFICIAL = [ 'Pudim', 'Sopa', 'Suco', 'Batata Frita', 'Pizza', 'Café', 'Café', 'Sanduíche', 'Panqueca', 'Presunto', 'Queijo', 'Sushi', 'Churros', 'Sushi', 'Sorvete', 'Macarrão', 'Hambúrguer', 'Iogurte', 'Panqueca', 'Sopa', 'Chá', 'Pizza', 'Sanduíche', 'Sorvete', 'Salada', 'Presunto', 'Bolo', 'Refrigerante', 'Salada', 'Iogurte', 'Queijo', 'Suco', 'Hambúrguer', 'Churros', 'Batata Frita', 'Pudim', 'Macarrão', 'Chá', 'Bolo', 'Refrigerante' ];
+  const STAGE_2_OFFICIAL = [ 'Café', 'Panqueca', 'Presunto', 'Macarrão', 'Suco', 'Refrigerante', 'Sopa', 'Macarrão', 'Sushi', 'Sushi', 'Presunto', 'Sopa', 'Chá', 'Churros', 'Iogurte', 'Pudim', 'Sanduíche', 'Churros', 'Pudim', 'Sorvete', 'Salada', 'Pizza', 'Batata Frita', 'Iogurte', 'Suco', 'Queijo', 'Bolo', 'Hambúrguer', 'Salada', 'Pizza', 'Batata Frita', 'Café', 'Chá', 'Sanduíche', 'Sorvete', 'Bolo', 'Refrigerante', 'Hambúrguer', 'Queijo', 'Presunto' ];
+  const STAGE_3_OFFICIAL = [ { word: 'Churros', criterion: 'Temperatura', isSwitch: false }, { word: 'Hambúrguer', criterion: 'Temperatura', isSwitch: false }, { word: 'Hambúrguer', criterion: 'Sabor', isSwitch: true }, { word: 'Pudim', criterion: 'Sabor', isSwitch: false }, { word: 'Sopa', criterion: 'Sabor', isSwitch: false }, { word: 'Bolo', criterion: 'Sabor', isSwitch: false }, { word: 'Chá', criterion: 'Sabor', isSwitch: false }, { word: 'Sanduíche', criterion: 'Sabor', isSwitch: false }, { word: 'Salada', criterion: 'Temperatura', isSwitch: true }, { word: 'Pizza', criterion: 'Sabor', isSwitch: true }, { word: 'Batata Frita', criterion: 'Sabor', isSwitch: false }, { word: 'Churros', criterion: 'Temperatura', isSwitch: true }, { word: 'Batata Frita', criterion: 'Temperatura', isSwitch: false }, { word: 'Chá', criterion: 'Sabor', isSwitch: true }, { word: 'Sorvete', criterion: 'Temperatura', isSwitch: true }, { word: 'Iogurte', criterion: 'Temperatura', isSwitch: false }, { word: 'Suco', criterion: 'Sabor', isSwitch: true }, { word: 'Pizza', criterion: 'Sabor', isSwitch: false }, { word: 'Salada', criterion: 'Sabor', isSwitch: false }, { word: 'Chá', criterion: 'Temperatura', isSwitch: true }, { word: 'Salada', criterion: 'Sabor', isSwitch: true }, { word: 'Sorvete', criterion: 'Sabor', isSwitch: false }, { word: 'Bolo', criterion: 'Temperatura', isSwitch: true }, { word: 'Sopa', criterion: 'Temperatura', isSwitch: false }, { word: 'Macarrão', criterion: 'Sabor', isSwitch: true }, { word: 'Sushi', criterion: 'Sabor', isSwitch: false }, { word: 'Macarrão', criterion: 'Temperatura', isSwitch: true }, { word: 'Sopa', criterion: 'Temperatura', isSwitch: false }, { word: 'Panqueca', criterion: 'Temperatura', isSwitch: false }, { word: 'Queijo', criterion: 'Sabor', isSwitch: true }, { word: 'Iogurte', criterion: 'Temperatura', isSwitch: true }, { word: 'Pizza', criterion: 'Temperatura', isSwitch: false }, { word: 'Iogurte', criterion: 'Sabor', isSwitch: true }, { word: 'Café', criterion: 'Sabor', isSwitch: false }, { word: 'Presunto', criterion: 'Temperatura', isSwitch: true }, { word: 'Pudim', criterion: 'Sabor', isSwitch: true }, { word: 'Macarrão', criterion: 'Sabor', isSwitch: false }, { word: 'Presunto', criterion: 'Temperatura', isSwitch: true }, { word: 'Refrigerante', criterion: 'Sabor', isSwitch: true }, { word: 'Sushi', criterion: 'Temperatura', isSwitch: true }, { word: 'Bolo', criterion: 'Temperatura', isSwitch: false }, { word: 'Refrigerante', criterion: 'Temperatura', isSwitch: false }, { word: 'Hambúrguer', criterion: 'Sabor', isSwitch: true }, { word: 'Suco', criterion: 'Temperatura', isSwitch: true }, { word: 'Queijo', criterion: 'Temperatura', isSwitch: false }, { word: 'Sushi', criterion: 'Sabor', isSwitch: true }, { word: 'Pudim', criterion: 'Temperatura', isSwitch: true }, { word: 'Sorvete', criterion: 'Temperatura', isSwitch: false }, { word: 'Iogurte', criterion: 'Sabor', isSwitch: true }, { word: 'Café', criterion: 'Temperatura', isSwitch: true }, { word: 'Hambúrguer', criterion: 'Temperatura', isSwitch: false }, { word: 'Presunto', criterion: 'Sabor', isSwitch: true }, { word: 'Refrigerante', criterion: 'Temperatura', isSwitch: true }, { word: 'Salada', criterion: 'Temperatura', isSwitch: false }, { word: 'Sanduíche', criterion: 'Temperatura', isSwitch: false }, { word: 'Sanduíche', criterion: 'Temperatura', isSwitch: false }, { word: 'Macarrão', criterion: 'Temperatura', isSwitch: false }, { word: 'Panqueca', criterion: 'Sabor', isSwitch: true }, { word: 'Pizza', criterion: 'Temperatura', isSwitch: true }, { word: 'Pudim', criterion: 'Temperatura', isSwitch: false }, { word: 'Queijo', criterion: 'Temperatura', isSwitch: false }, { word: 'Churros', criterion: 'Sabor', isSwitch: true }, { word: 'Panqueca', criterion: 'Temperatura', isSwitch: true }, { word: 'Churros', criterion: 'Sabor', isSwitch: true }, { word: 'Suco', criterion: 'Temperatura', isSwitch: true }, { word: 'Batata Frita', criterion: 'Temperatura', isSwitch: false }, { word: 'Refrigerante', criterion: 'Sabor', isSwitch: true }, { word: 'Queijo', criterion: 'Sabor', isSwitch: false }, { word: 'Panqueca', criterion: 'Sabor', isSwitch: false }, { word: 'Presunto', criterion: 'Sabor', isSwitch: false }, { word: 'Suco', criterion: 'Sabor', isSwitch: false }, { word: 'Sorvete', criterion: 'Sabor', isSwitch: false }, { word: 'Chá', criterion: 'Temperatura', isSwitch: true }, { word: 'Bolo', criterion: 'Sabor', isSwitch: true }, { word: 'Batata Frita', criterion: 'Sabor', isSwitch: false }, { word: 'Sanduíche', criterion: 'Sabor', isSwitch: false }, { word: 'Café', criterion: 'Sabor', isSwitch: false }, { word: 'Sushi', criterion: 'Temperatura', isSwitch: true }, { word: 'Sopa', criterion: 'Sabor', isSwitch: true }, { word: 'Café', criterion: 'Temperatura', isSwitch: true } ];
 
   // --- VARIÁVEIS DE ESTADO ---
   let gameState = 'INSTRUCTIONS_1';
@@ -42,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'INSTRUCTIONS_3': document.getElementById('instructions-3'),
     'POSITIONING': document.getElementById('positioning-screen'),
     'TEST': document.getElementById('test-screen'),
+    'TRANSITION': document.getElementById('transition-screen'),
     'RESULTS': document.getElementById('results-screen')
   };
   const testCueEl = document.getElementById('test-cue');
@@ -50,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const testProgressEl = document.getElementById('test-progress');
   const testKeyAMeaningEl = document.getElementById('test-key-a-meaning');
   const testKeyLMeaningEl = document.getElementById('test-key-l-meaning');
+  const transitionKeyAEl = document.getElementById('transition-key-a-text');
+  const transitionKeyLEl = document.getElementById('transition-key-l-text');
   const restartButton = document.getElementById('restart-button');
 
   const KEY_HINTS_BY_STAGE = {
@@ -70,9 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.removeEventListener('keydown', handleInstructionKey);
 
     const stageMap = {
-      'INSTRUCTIONS_1': { next: 'STAGE_1', stageNum: 1, trials: STAGE_1_TRIALS },
-      'INSTRUCTIONS_2': { next: 'STAGE_2', stageNum: 2, trials: STAGE_2_TRIALS },
-      'INSTRUCTIONS_3': { next: 'STAGE_3', stageNum: 3, trials: STAGE_3_TRIALS },
+      'INSTRUCTIONS_1': { next: 'STAGE_1_DEMO', stageNum: 1, trials: STAGE_1_DEMO },
+      'INSTRUCTIONS_2': { next: 'STAGE_2_DEMO', stageNum: 2, trials: STAGE_2_DEMO },
+      'INSTRUCTIONS_3': { next: 'STAGE_3_DEMO', stageNum: 3, trials: STAGE_3_DEMO },
     };
 
     const config = stageMap[gameState];
@@ -111,12 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
     testImageEl.src = `src/imagens/${encodeURIComponent(word)}.jpg`;
     testImageEl.alt = word;
     testFeedbackEl.classList.add('hidden');
-    testProgressEl.textContent = `Progresso: ${currentIndex + 1} / ${currentTrials.length}`;
-    
+
+    const isDemo = gameState.endsWith('_DEMO');
+    testProgressEl.textContent = `${isDemo ? 'Treino' : 'Teste'}: ${currentIndex + 1} / ${currentTrials.length}`;
+
     errorCount = 0;
     startTime = Date.now();
   }
-  
+
   function getTrialInfo() {
     const currentTrial = currentTrials[currentIndex];
     if (stageNumber < 3) {
@@ -137,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let correctKey;
     if (criterion === 'Temperatura') {
         correctKey = foodItem.temperature === 'Frio' ? 'a' : 'l';
-    } else { // Sabor
+    } else {
         correctKey = foodItem.flavor === 'Doce' ? 'a' : 'l';
     }
 
@@ -158,18 +174,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function endStage() {
     window.removeEventListener('keydown', handleTestKey);
-    results.push(...stageResults);
+
+    const isDemo = gameState.endsWith('_DEMO');
+    if (!isDemo) {
+      results.push(...stageResults);
+    }
 
     switch (gameState) {
+      case 'STAGE_1_DEMO':
+        showTransition(1);
+        break;
       case 'STAGE_1':
         gameState = 'INSTRUCTIONS_2';
         showScreen('INSTRUCTIONS_2');
         window.addEventListener('keydown', handleInstructionKey);
         break;
+      case 'STAGE_2_DEMO':
+        showTransition(2);
+        break;
       case 'STAGE_2':
         gameState = 'INSTRUCTIONS_3';
         showScreen('INSTRUCTIONS_3');
         window.addEventListener('keydown', handleInstructionKey);
+        break;
+      case 'STAGE_3_DEMO':
+        showTransition(3);
         break;
       case 'STAGE_3':
         gameState = 'RESULTS';
@@ -177,11 +206,40 @@ document.addEventListener('DOMContentLoaded', () => {
         break;
     }
   }
-  
+
+  function showTransition(stageNum) {
+    const officialTrials = { 1: STAGE_1_OFFICIAL, 2: STAGE_2_OFFICIAL, 3: STAGE_3_OFFICIAL }[stageNum];
+    pendingStage = { next: `STAGE_${stageNum}`, stageNum, trials: officialTrials };
+    gameState = 'TRANSITION';
+
+    const hints = KEY_HINTS_BY_STAGE[stageNum];
+    transitionKeyAEl.innerHTML = hints.a;
+    transitionKeyLEl.innerHTML = hints.l;
+
+    showScreen('TRANSITION');
+    window.addEventListener('keydown', handleTransitionKey);
+  }
+
+  function handleTransitionKey(event) {
+    if (event.code !== 'Space') return;
+    window.removeEventListener('keydown', handleTransitionKey);
+    gameState = pendingStage.next;
+    stageNumber = pendingStage.stageNum;
+    currentTrials = pendingStage.trials;
+    currentIndex = 0;
+    stageResults = [];
+    const hints = KEY_HINTS_BY_STAGE[stageNumber];
+    testKeyAMeaningEl.innerHTML = hints.a;
+    testKeyLMeaningEl.innerHTML = hints.l;
+    showScreen('TEST');
+    renderCurrentTrial();
+    window.addEventListener('keydown', handleTestKey);
+  }
+
   function handleInstructionKey(event) {
-      if (event.code === 'Space') {
-          startStage();
-      }
+    if (event.code === 'Space') {
+      startStage();
+    }
   }
 
   // --- DOWNLOAD CSV ---
